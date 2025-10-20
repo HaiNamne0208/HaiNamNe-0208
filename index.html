@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Card thông tin cá nhân</title>
+    <style>
+      :root {
+        --bg: #f3f6fb;
+        --card: #ffffff;
+        --accent: #4f46e5; /* indigo */
+        --muted: #6b7280;
+        --glass: rgba(255, 255, 255, 0.6);
+        --shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(180deg, var(--bg), #eef2ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+      }
+
+      .card {
+        width: 340px;
+        background: var(--card);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .avatar {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 6px solid var(--glass);
+        margin-top: -36px;
+        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.12);
+      }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin: 12px 0 4px;
+      }
+      p.role {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .phone-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 14px;
+      }
+      .phone {
+        font-weight: 600;
+      }
+      .btn-copy {
+        background: transparent;
+        border: 1px solid #e6e9f2;
+        padding: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .contacts {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #f9fafc;
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+      }
+      .contact-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #eef2ff;
+        background: linear-gradient(180deg, #fff, #fbfdff);
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        font-weight: 600;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+      .contact-btn:active {
+        transform: translateY(1px);
+      }
+      .contact-btn .label {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* icon styles */
+      .icon {
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+      }
+
+      .meta {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* responsive */
+      @media (max-width: 420px) {
+        .card {
+          width: 92%;
+          padding: 16px;
+        }
+        .avatar {
+          width: 92px;
+          height: 92px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card" role="region" aria-label="Card thông tin cá nhân">
+      <!-- decorative top (for visual) -->
+      <div
+        style="
+          height: 36px;
+          width: 100%;
+          background: linear-gradient(
+            90deg,
+            rgba(79, 70, 229, 0.12),
+            rgba(59, 130, 246, 0.06)
+          );
+          border-top-left-radius: 16px;
+          border-top-right-radius: 16px;
+        "
+      ></div>
+
+      <div class="avatar" aria-hidden="true">
+        <!-- Thay src bằng ảnh thật của bạn -->
+        <img src="nam.jpg" alt="Ảnh cá nhân" />
+      </div>
+
+      <h1 id="name">Lê Hải Nam</h1>
+      <p class="role">Hứa Hoàng Nam</p>
+
+      <div class="phone-row">
+        <div>
+          <div class="meta">Số điện thoại</div>
+          <div class="phone" id="phoneText">0985282005</div>
+          <!-- <div class="meta">Số điện thoại</div> -->
+        </div>
+        <button class="btn-copy" id="copyBtn" title="Sao chép số điện thoại">
+          Sao chép
+        </button>
+      </div>
+
+      <div class="contacts" role="list" aria-label="Các phương thức liên lạc">
+        <!-- Zalo -->
+        <a
+          class="contact-btn"
+          href="https://zalo.me/0985282005"
+          target="_blank"
+          rel="noopener noreferrer"
+          role="listitem"
+          aria-label="Zalo"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect width="24" height="24" rx="5" fill="#2F5D9E" />
+            <path
+              d="M6 7.5h12v1H6v-1zM6 10.5h12v1H6v-1zM6 13.5h8v1H6v-1z"
+              fill="#fff"
+            />
+          </svg>
+          <span class="label">Zalo</span>
+        </a>
+
+        <!-- Facebook -->
+        <a
+          class="contact-btn"
+          href="https://www.facebook.com/hainam.le.020805"
+          target="_blank"
+          rel="noopener noreferrer"
+          role="listitem"
+          aria-label="Facebook"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect width="24" height="24" rx="5" fill="#1877F2" />
+            <path
+              d="M15.5 8H13.75c-.3 0-.5.23-.5.5V10.5h2.25l-.25 2H13.25V18h-2.5v-5.5H8.75v-2.5h2v-1.6C10.75 7.07 11.6 6 13.5 6H15.5v2z"
+              fill="#fff"
+            />
+          </svg>
+          <span class="label">Facebook</span>
+        </a>
+
+        <!-- TikTok -->
+        <a
+          class="contact-btn"
+          href="http://www.tiktok.com/@hnamne208"
+          target="_blank"
+          rel="noopener noreferrer"
+          role="listitem"
+          aria-label="TikTok"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect width="24" height="24" rx="5" fill="#000" />
+            <path
+              d="M15 7.5a3.5 3.5 0 0 1-3.5-3.5v7.5a4 4 0 1 1-4 4V8a6 6 0 1 0 6-6h1v7z"
+              fill="#fff"
+            />
+          </svg>
+          <span class="label">TikTok</span>
+        </a>
+        <a
+          class="contact-btn"
+          href="https://www.instagram.com/h.nam_0208?igsh=ZWo5bjhvOTZ1Nzlj&utm_source=qr"
+          target="_blank"
+          rel="noopener noreferrer"
+          role="listitem"
+          aria-label="Instagram"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect width="24" height="24" rx="5" fill="#E1306C" />
+            <path
+              d="M8 5h8a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3zm4 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm4.5-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
+              fill="#fff"
+            />
+          </svg>
+          <span class="label">Instagram</span>
+        </a>
+      </div>
+
+      <div class="meta" style="margin-bottom: 8px">
+        Email: <strong>namcute282005@gmail.com</strong>
+      </div>
+
+      <div style="font-size: 12px; color: var(--muted); padding-bottom: 12px">
+        Cập nhật lần cuối: <time datetime="2025-10-10">10 Oct 2025</time>
+      </div>
+    </div>
+
+    <script>
+      // JS nhỏ: copy số điện thoại
+      const copyBtn = document.getElementById("copyBtn");
+      const phoneText = document.getElementById("phoneText").textContent.trim();
+      copyBtn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(phoneText);
+          copyBtn.textContent = "Đã sao chép";
+          setTimeout(() => (copyBtn.textContent = "Sao chép"), 1500);
+        } catch (e) {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = phoneText;
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+            copyBtn.textContent = "Đã sao chép";
+          } catch (e) {
+            alert("Không thể sao chép. Vui lòng sao chép thủ công.");
+          }
+          ta.remove();
+          setTimeout(() => (copyBtn.textContent = "Sao chép"), 1500);
+        }
+      });
+    </script>
+  </body>
+</html>
